@@ -6,12 +6,15 @@ namespace ProductCatalog.Data
 {
     public class StoreDataContext : DbContext
     {
+        public StoreDataContext (DbContextOptions<StoreDataContext> options)
+            : base(options)
+        {
+        }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=prodcat;User Id=andreyevyk;Password=x@LsnKiLkqFse");
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
